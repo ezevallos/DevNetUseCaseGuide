@@ -643,4 +643,51 @@ Luego debemos crear un nuevo *intent*, es decir intención o propósito. Este se
 Luego de crear nuestro *intent* y especificar su nombre, debemos indicar las frases con las que se ha de entrenar al asistente para reconocer nuestra intención.
 Debido a que el software de reconocimiento de imágenes *Imagga* nos devuelve la clasificación en palabras en inglés, tiene sentido utilizar frases de entrenamiento en inglés. Usaremos frases de entrenamiento como "what is in sight", "what is it", "what is in view", o "what do you see", ya que esto significa "¿qué ves?", y es precisamente lo que hará el software, decirnos qué ve. No olvidemos guardar los cambios realizados mediante el botón azul que dice "*Save*".
 ![Dialogflow Intent Training Phrases](https://i.ibb.co/NLtrG97/DF-TI-3.png)
-Para el siguiente paso, será importante tener a la mano la dirección pública de nuestra *app*, que obtuvimos luego de realizar el `heroku create`.
+En la misma página, deslizamos hacia abajo, y damos click a activar la opción de *Fulfillment*.
+![DialogFlow Intent Fulfillment](https://i.ibb.co/r5WJNvx/DF-TI-4.png) 
+Luego de esto, habilitamos la opción de llamada de *webhook* para nuestro *intent*.
+![DialogFlow Intent Fulfillment with Webhook](https://i.ibb.co/cLCWPB2/DF-TI-5.png)
+Luego de haber habilitado esta opción, nos dirigimos en la barra lateral izquierda a la sección de *Fulfillment*. Aquí, habilitaremos los webhooks para nuestro agente.
+![DialogFlow Fulfillment](https://i.ibb.co/vc8msyq/DF-TI-6.png)
+Para el siguiente paso, será importante tener a la mano la dirección pública de nuestra *app*, que obtuvimos luego de realizar el `heroku create`.  En el espacio especificado para la URL, introducimos la dirección de nuestro aplicativo de *Heroku*.
+![DialogFlow Fulfillment Webhok](https://i.ibb.co/HBMHWcp/DF-TI-7.png)
+Para el último paso, necesitaremos nuestros *API Keys*. Para esto nos dirigimos a la configuración de nuestro agente, dando "*click*" en la ruedita o tuerca en la barra lateral, y deslizamos hacia abajo para encontrar nuestros *API Keys*. Es muy importante que copiemos el *Client Access Token*, y no el otro *API Key*.
+![DialogFlow Settings APIKeys](https://i.ibb.co/2tJbN1M/DF-TI-8.png)
+Finalmente, el último paso será dirigirnos al directorio donde está nuestro proyecto y repositorio local, desde el *Git Bash*. En nuestra línea de comando, introducimos la siguiente directiva:
+```git
+export CLIENT_ACCESS_TOKEN='CLIENT_ACCESS_TOKEN'
+```
+Donde `'CLIENT_ACCESS_TOKEN'` es el *API Key* llamado *Client access token* mostrado en la figura anterior. Luego de hacer esto, volvemos a seguir los pasos para actualizar nuestro repositorio de *Heroku*.
+Agregar los archivos de nuestro nuevo repositorio local. Esto lo añadimos al área de ensayo, para el primer *commit*.
+```git
+$ git add .
+```
+Realizamos el commit de los archivos que hemos añadido al área de ensayo en nuestro repositorio local.
+```git
+$ git commit -m "Primer commit"
+```
+Publicamos nuestro proyecto al repositorio de GitHub.
+```git
+$ git push origin master
+```
+Y luego al *Heroku*.
+```git
+$ git push heroku master
+```
+``` git
+$ heroku ps:scale web=1
+``` 
+Este comando asegura que al menos una instancia del aplicativo esté corriendo
+```git
+$ heroku logs --tail
+```
+Este comando nos permitirá ver los logs y hacer debugging y troubleshooting luego de desplegar la app.
+
+Finalmente, para probar nuestra aplicación, entramos a la consola de *test*.
+![DialogFlowIntegrations](https://i.ibb.co/Q88Qbxk/DF-TI-9.png)
+![](https://i.ibb.co/1qkrg2Z/DF-TI-10.png)
+
+Aquí hacemos click en *Talk to my test app* y escribimos nuestro intent "*what do you see*" o podemos utilizar el micrófono para decirlo.
+![Test Console](https://i.ibb.co/nzvnQxB/DF-TI-11.png)
+
+[↑](#toc)
