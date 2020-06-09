@@ -1,5 +1,7 @@
 # Guía de Casos de Uso - DevNet
 
+Esta guía fue desarrollada con el apoyo de David Fernández (Cisco) y Franco Ramírez (Cisco).
+
 <div id='toc'/>
 
 # Tabla de contenidos
@@ -224,6 +226,8 @@ Notamos en esta última captura de pantalla que los dispositivos son diferentes,
 <div id='para4'/>
 
 # Lab: Reconocimiento de imágenes mediante un comando de voz. Utilice las *APIs* de *Cisco Meraki*, *Imagga* y *Google Actions* para analizar la captura de una cámara de Meraki, mediante un comando de voz en un dispositivo *Android* con *Google Assistant* 
+
+Este laboratorio se desarrolló con el apoyo de Matt Denapoli (Cisco).
 
 ## Introducción
 En este laboratorio obtenemos un *snapshot* de una cámara *Cisco Meraki*, haciendo uso del *Dashboard API*. Luego, envíamos la imagen a un software de reconocimiento de imágenes llamado *Imagga*, cuyo *API* es de uso abierto. Finalmente, utilizamos la *API* de *Google Actions* para que nos lea las características de la imagen en voz alta, y nos muestre la imagen; mediante un comando de voz de *Google Assistant*.
