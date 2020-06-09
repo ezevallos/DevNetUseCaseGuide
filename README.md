@@ -237,6 +237,27 @@ Necesitará una cuenta de usuario de Webex Teams para completar este laboratorio
 2. Si aún no tiene una cuenta, haga clic en Registrarse, luego pruebe Meetings Free y siga las instrucciones
 3. Inicie sesión con sus nuevas credenciales
 
+## Step 1: Crear una cuenta bot
+1. Inicie sesión en '[Webex for Developers](https://developer.webex.com/)' y abra la entrada del menú "My Webex Teams Apps" debajo de su avatar. Esto lo llevará a la página "[Mis aplicaciones](https://developer.webex.com/my-apps)":
+![BotAccount](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step1_my_apps.png)
+2. Haga clic en el botón **Crear una nueva aplicación** y elija "Crear un bot":
+![CreateBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step1_bot.png)
+```git
+Esta acción muestra el [Formulario de creación de bot] (https://developer.webex.com/my-apps/new/bot) que se muestra en la siguiente ilustración.
+```
+1. Complete un nombre y un identificador de correo electrónico único para su bot.
+2. Elija un color de cara para su bot entre los propuestos rojo, amarillo o verde, y agregue una breve descripción:
+![NewBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step1_my_awesome_bot.png)
+3. Haga clic en Agregar Bot para crear su cuenta Bot
+4. Una vez que la página se actualiza, se muestran los detalles de su bot.
+5. Desplácese hacia abajo hasta la parte inferior de la página para revelar el token de acceso de su bot
+6. Copie / pegue el token de su bot en un lugar seguro (o simplemente mantenga esta pestaña abierta), ¡ya que no se volverá a mostrar! Lo usará más adelante en este laboratorio.
+![BotToken](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step1_token.png)
+**Nota: el token de acceso de un Webex Teams Bot dura 100 años. Si alguna vez pierde o revela el token de su bot, simplemente regrese a la página de detalles de su bot y regenere un nuevo token de acceso. El token emitido previamente será revocado automáticamente**
+6. En este punto, su bot se puede agregar a cualquier espacio de Webex Teams especificando su correo electrónico, al igual que con un usuario normal.
+Vaya a su cliente favorito de Webex Teams y cree un nuevo espacio 1-1 con su bot como participante.
+![ChatwithBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step1_new_room_share.png)
+
 [↑](#toc)
 <div id='para4'/>
 
