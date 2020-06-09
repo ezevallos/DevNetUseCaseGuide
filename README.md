@@ -1,6 +1,6 @@
 # Guía de Casos de Uso - DevNet
 
-Esta guía fue desarrollada con el apoyo de David Fernández (Cisco) y Franco Ramírez (Cisco).
+Esta guía fue desarrollada con el apoyo de David Fernández (Cisco), Franco Ramírez (Cisco) y Matt Denapoli (Cisco).
 
 <div id='toc'/>
 
@@ -221,6 +221,21 @@ Notamos en esta última captura de pantalla que los dispositivos son diferentes,
 <div id='para3'/>
 
 # Lab: Implementación de un ChatBot de Webex Teams con Python y Flask.
+
+## Objetivos
+En este laboratorio, aprenderá a ejecutar su propio bot de Webex Teams siguiendo los siguientes pasos:
+- Cree una cuenta bot en https://developer.webex.com
+- Ejecute una aplicación de bot Webex Teams de muestra en su PC
+- Registre un webhook con el servicio API de Webex Teams
+- Exponga su bot a internet para que pueda recibir notificaciones entrantes de webhook de Webex Teams
+Finalmente, chatear con su nuevo amigo:
+![AwesomeBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Objectives_chat.png)
+
+## Pre-requisitos
+Necesitará una cuenta de usuario de Webex Teams para completar este laboratorio:
+1. Vaya al sitio web de desarrolladores de Webex Teams
+2. Si aún no tiene una cuenta, haga clic en Registrarse, luego pruebe Meetings Free y siga las instrucciones
+3. Inicie sesión con sus nuevas credenciales
 
 [↑](#toc)
 <div id='para4'/>
