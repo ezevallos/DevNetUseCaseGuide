@@ -239,7 +239,7 @@ Necesitará una cuenta de usuario de Webex Teams para completar este laboratorio
 2. Si aún no tiene una cuenta, haga clic en Registrarse, luego pruebe Meetings Free y siga las instrucciones
 3. Inicie sesión con sus nuevas credenciales
 
-## Step 1: Crear una cuenta bot
+## Paso 1: Crear una cuenta bot
 1. Inicie sesión en '[Webex for Developers](https://developer.webex.com/)' y abra la entrada del menú "My Webex Teams Apps" debajo de su avatar. Esto lo llevará a la página "[Mis aplicaciones](https://developer.webex.com/my-apps)":
 ![BotAccount](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step1_my_apps.png)
 2. Haga clic en el botón **Crear una nueva aplicación** y elija "Crear un bot":
@@ -259,6 +259,20 @@ Esta acción muestra el [Formulario de creación de bot] (https://developer.webe
 6. En este punto, su bot se puede agregar a cualquier espacio de Webex Teams especificando su correo electrónico, al igual que con un usuario normal.
 Vaya a su cliente favorito de Webex Teams y cree un nuevo espacio 1-1 con su bot como participante.
 ![ChatwithBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step1_new_room_share.png)
+Aunque ya puedes chatear con tu bot, todavía no verás una respuesta ... ya que aún no lo hemos conectado a ninguna lógica de código personalizado. Arreglaremos esto en los próximos pasos.
+
+## Paso 2: Ejecutar el bot en su PC local
+Para simplificar las cosas, usaremos Git para clonar una copia de un proyecto de código de muestra existente. Este ejemplo de código es un bot "HelloWorld" que da la bienvenida a los participantes cuando se agrega a una sala. El bot también es capaz de repetir un mensaje o mostrar su menú de ayuda cuando un participante solicita ayuda. Configuraremos este ejemplo de código para que se ejecute con la identidad de Webex Teams de la cuenta de bot que acabamos de crear.
+**Nota: asegúrese de que su entorno local cumpla los requisitos previos de git, python y flask**
+1. Abra una ventana de terminal, clone las muestras de código github, luego abra la carpeta `collab-spark-botl-itp` en VS Code:
+```git
+git clone https://github.com/CiscoDevNet/devnet-express-cloud-collab-code-samples
+ cd devnet-express-cloud-collab-code-samples
+ cd itp
+ cd collab-spark-botl-itp
+ code .
+```
+
 
 [↑](#toc)
 <div id='para4'/>
