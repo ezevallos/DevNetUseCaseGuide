@@ -316,6 +316,54 @@ Debería ver un mensaje similar al siguiente en la Consola de *Debugging*:
 **¡Felicidades, ahora tiene su propia aplicación de bot Webex Teams en funcionamiento!**
 Sin embargo, todavía hay algunos pasos importantes para completar antes de que podamos comenzar a chatear con su bot...
 
+## Paso 3: Exponer su bot a internet
+Como Webex Teams existe en la "nube" de Internet, un requisito clave para una aplicación de bot es que su aplicación sea accesible a través de una dirección de Internet / puerto de acceso público. Como la mayoría de las PC están protegidas por firewalls / NAT y no están conectadas directamente a Internet, esto puede suponer un desafío a menos que tenga acceso a una DMZ o un servidor alojado en la nube.
+
+Una solución a este desafío, para los fines de este laboratorio, será utilizar una herramienta de código abierto+servicio llamado **ngrok** para crear un túnel virtual entre su PC e Internet. Este túnel permite que las solicitudes HTTP entrantes enviadas a una URL especial en el servicio en la nube ngrok se transmitan a través de su aplicación de escucha de bot.
+
+A continuación se muestra una descripción de cómo funciona esto. La magia ocurre con la flecha etiquetada **3. reenvía eventos Webhook** en la figura a continuación:
+![ngrokMagic](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step3_architecture.png)
+[LocalTunnel](https://localtunnel.github.io/www/) es otra tecnología tunel popular de , similar a ngrok.
+1. Descargue e instale el binario ngrok desde [https://ngrok.com/download](https://ngrok.com/download)
+2. Abra una sesión de terminal y ejecute:
+**En Windows**
+```bash
+ngrok http 8080
+``` 
+**En Mac/Linux**
+```bash
+./ngrok http 8080
+``` 
+Debe obtener una salida similar a:
+![ngrokTunnel](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step3_output.png)
+Su aplicación de bot ahora está expuesta en vivo en Internet y se puede acceder a través de HTTP o HTTPS. **Busque las líneas de "Reenvío" en la ventana de la consola de ngrok ... esta es la URL de su bot**. En el ejemplo anterior, la dirección/puerto seguro de acceso público del bot sería: `https://e86a29c5.ngrok.io/`
+3. Ahora abra un navegador web y busque la URL de túnel de su bot a través de ngrok. Debería ver un mensaje similar al que se muestra a continuación:
+![ngrokTestBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step2_healthcheck.png)
+En el siguiente paso, le mostraremos cómo crear un webhook para conectar su bot y completar el rompecabezas...
+
+## Paso 4: Crear el webhook de eventos de Webex Teams
+En esta sección, crearemos algunos webhooks API de Webex Teams para que nuestro bot comience a recibir notificaciones cuando sucedan eventos en una sala. Los webhooks se crean a través del recurso REST de Webex Teams API `/webhooks` - aquí, utilizaremos la documentación interactiva de la API de Webex Teams para lograr lo que debemos hacer:
+1. Vaya a la **guía explicada de Webhooks** del sitio **Webex Teams for Developers**: [https://developer.webex.com/docs/api/guides/webhooks](https://developer.webex.com/docs/api/guides/webhooks)
+Esta página muestra todos los recursos de webhooks y tipos de eventos compatibles con Webex Teams. Para nuestro bot, necesitaremos lo siguiente:
+	- **Messages / Created**: un nuevo mensaje publicado en una sala
+	- **Memberships / Created**: alguien se unió a una habitación en la que estás
+2. Vaya a Webhooks/Crear un Webhook, en la página de referencia de API
+3. Asegúrese de haber iniciado sesión y de que el modo **Probar** (**Try it**) esté habilitado
+4. Complete los campos de solicitud como se muestra en la imagen a continuación:
+	- `Authorization`: **REEMPLACE** el token de acceso en este campo con el token de acceso de su cuenta de **bot**
+	- `name`: ingrese un nombre para el webhook (puede ser lo que quiera)
+	- `targetUrl`: pegue la URL de reenvío público pHTTPS de su bot como lo proporciona ngrok
+	- `resource`: ingrese `messages`
+	- `event`: ingresar `created`
+**Nota: Deje cualquier otro campo en blanco**
+![WebHookMessages](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step4_create_a_webhook.png)
+5. Haga clic en **Ejecutar** (**Run**) y verifique la respuesta en el panel derecho
+Si su solicitud se completó con éxito, verá un mensaje verde `200/success`, junto con algunos detalles sobre el webhook creado, incluido su identificador único (verifique el campo `id`) y la URL de destino.
+**Ahora, creemos nuestro segundo webhook**
+Para recibir un evento cada vez que nuestro bot se agrega a una sala:
+1. Reutilizando el mismo formulario en la página de webhooks de la referencia de API, modifique el valor del campo `resources`: reemplace `messages` con `memberships`.
+2. Haga clic en **Ejecutar** (**Run**) nuevamente y verifique que su segundo webhook se haya creado correctamente con `200/success`.
+
 [↑](#toc)
 <div id='para4'/>
 
