@@ -224,10 +224,12 @@ Notamos en esta última captura de pantalla que los dispositivos son diferentes,
 
 ## Objetivos
 En este laboratorio, aprenderá a ejecutar su propio bot de Webex Teams siguiendo los siguientes pasos:
-- Cree una cuenta bot en https://developer.webex.com
-- Ejecute una aplicación de bot Webex Teams de muestra en su PC
-- Registre un webhook con el servicio API de Webex Teams
-- Exponga su bot a internet para que pueda recibir notificaciones entrantes de webhook de Webex Teams
+
+- Crear una cuenta bot en https://developer.webex.com
+- Ejecutar una aplicación de bot Webex Teams de muestra en su PC
+- Registrar un webhook con el servicio API de Webex Teams
+- Exponer su bot a internet para que pueda recibir notificaciones entrantes de webhook de Webex Teams
+
 Finalmente, chatear con su nuevo amigo:
 ![AwesomeBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Objectives_chat.png)
 
