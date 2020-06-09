@@ -264,7 +264,7 @@ Aunque ya puedes chatear con tu bot, todavía no verás una respuesta ... ya que
 ## Paso 2: Ejecutar el bot en su PC local
 Para simplificar las cosas, usaremos Git para clonar una copia de un proyecto de código de muestra existente. Este ejemplo de código es un bot "HelloWorld" que da la bienvenida a los participantes cuando se agrega a una sala. El bot también es capaz de repetir un mensaje o mostrar su menú de ayuda cuando un participante solicita ayuda. Configuraremos este ejemplo de código para que se ejecute con la identidad de Webex Teams de la cuenta de bot que acabamos de crear.
 **Nota: asegúrese de que su entorno local cumpla los requisitos previos de git, python y flask**
-1. Abra una ventana de terminal, clone las muestras de código github, luego abra la carpeta `collab-spark-botl-itp` en VS Code:
+1. Abra una ventana de terminal, clone las [muestras de código github](https://github.com/CiscoDevNet/devnet-express-cloud-collab-code-samples), luego abra la carpeta `collab-spark-botl-itp` en VS Code:
 ```git
 git clone https://github.com/CiscoDevNet/devnet-express-cloud-collab-code-samples
  cd devnet-express-cloud-collab-code-samples
@@ -272,7 +272,49 @@ git clone https://github.com/CiscoDevNet/devnet-express-cloud-collab-code-sample
  cd collab-spark-botl-itp
  code .
 ```
+2. Abra el archivo de configuración de inicio de VS Code `launch.json` en el directorio `.vscode/` y modifique la variable de entorno `TEAMS_ACCESS_TOKEN`. El valor debe establecerse en el token de acceso del bot que creó en el Paso 1:
+```git
+{
+     "version": "0.2.0",
+     "configurations": [
 
+         {
+             "name": "ChatOps",
+             "type": "python",
+             "request": "launch",
+             "stopOnEntry": false,
+             "pythonPath": "${config.python.pythonPath}",
+             "program": "${file}",
+             "cwd": "${workspaceRoot}",
+             "debugOptions": [
+                 "WaitOnAbnormalExit",
+                 "WaitOnNormalExit",
+                 "RedirectOutput"
+             ],
+             "args": [],
+             "env": {
+                 "TEAMS_ACCESS_TOKEN" : "PASTE YOUR BOT ACCESS TOKEN HERE"
+             }
+         }
+     ]
+ }
+```
+3. Guarde los cambios realizados en el archivo `launch.json`
+
+## Iniciar la aplicación del bot
+Iniciamos la aplicación del bot y la tenemos lista y escuchando los mensajes entrantes de webhook:
+1. En VS Code, abra el script de Python del bot para editarlo: run_bot.py
+2. Asegúrese de que no se hayan establecido puntos de interrupción de depuración (*debugging*) e inicie el script presionando F5
+Debería ver un mensaje similar al siguiente en la Consola de *Debugging*:
+```git
+ * Running on http://localhost:8080 (Press CTRL+C to quit)
+```
+**Nota: Si recibe un mensaje de error, significa que algo salió mal. Léalo detenidamente para ver si puede corregir el error e intente nuevamente**
+**Su bot ahora está activo y está escuchando las solicitudes HTTP entrantes en la siguiente URL:** http://localhost:8080
+3. Abra la URL de comprobación de estado de su bot (http://localhost:8080) en un navegador web:
+![TestBot](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step2_healthcheck.png)
+**¡Felicidades, ahora tiene su propia aplicación de bot Webex Teams en funcionamiento!**
+Sin embargo, todavía hay algunos pasos importantes para completar antes de que podamos comenzar a chatear con su bot...
 
 [↑](#toc)
 <div id='para4'/>
