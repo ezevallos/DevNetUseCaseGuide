@@ -364,6 +364,36 @@ Para recibir un evento cada vez que nuestro bot se agrega a una sala:
 1. Reutilizando el mismo formulario en la página de webhooks de la referencia de API, modifique el valor del campo `resources`: reemplace `messages` con `memberships`.
 2. Haga clic en **Ejecutar** (**Run**) nuevamente y verifique que su segundo webhook se haya creado correctamente con `200/success`.
 
+## Paso 5: prueba tu bot de Webex Teams
+En los pasos anteriores de esta práctica de laboratorio, lanzamos un script Python configurado con una cuenta de bot de Webex Teams personalizada, expusimos el bot a Internet a través de ngrok y creamos webhooks para comenzar a recibir notificaciones de Webex Teams.
+¡Ahora es el momento de chatear con tu bot!
+1. En su cliente de Webex Teams, vaya a la sala 1 a 1 que creó con su bot en el Paso 1
+2. Ingresamos: `help me`
+¡Comprueba la respuesta de tu bot!
+![BotResponse](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step5_bot_response.png)
+
+## Mencione su bot en una sala grupal
+Recuerde @mencionar a su bot en espacios grupales.
+Los bots DEBEN @mencionarse en espacios de grupo para ser notificados y ver los mensajes publicados. Veamos esto en acción:
+1. Abra la página de documentos interactivos 'Crear una sala'
+2. Rellene el formulario con un título de habitación
+3. NO modifique el token en el **Authorization header**. Queremos que la sala se cree bajo su usuario de Webex Teams
+4. Haga clic en **Ejecutar** (**Run**)
+Verifique que el resultado es un `200/success`, y que el tipo de espacio está especificado en "Group".
+**Nota: a pesar de que esta es una sala de grupo, eres el único miembro (por ahora)**
+![CreateRoom](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step5_create_a_room.png)
+5. Desde su cliente favorito de Webex Teams, vaya al espacio recién creado
+6. Invita a tu bot a la conversación agregándolo como participante, con la dirección de correo electrónico que creó en el paso 1
+7. Ingresamos: `Help me`
+**Nota: No debe obtener una respuesta, ya que su bot no ha sido mencionado**
+8. Ahora mencione su bot ingresando "@" y seleccionando su bot ... y observe su respuesta: `@myBotName Help me`
+![BotResponse](https://developer.cisco.com/learning/posts/files/collab-spark-botl-itp/assets/images/Step5_watch_for_its_answer.png)
+## Yendo más lejos
+¿Cómo puedo extender mi bot?
+Si tiene un entorno de desarrollo completamente funcional a su disposición, le sugerimos que comience agregando algunos puntos de interrupción en el archivo de programa principal del bot `run_bot.py`, luego reiniciar su bot y hacer *debugging* a través del flujo del programa para ver cómo funciona.
+Luego, podremos agregar algunos comandos de chat nuevos.
+Existen otros ejemplos de código de bot para Webex Teams, desde lo más básico hasta lo más avanzado.
+Encontrarás más ejemplos en el proyecto [awesome-webex](https://github.com/CiscoDevNet/awesome-webex#bot-samples).
 [↑](#toc)
 <div id='para4'/>
 
